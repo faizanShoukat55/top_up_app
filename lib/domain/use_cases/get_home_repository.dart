@@ -11,4 +11,9 @@ class GetHomeRepository{
     return await homeRepository.getTopUpList();
   }
 
+  Future<Either<Failure,TopUp>> addTopUp(TopUp topUp)async{
+    return await homeRepository.addTopUp(topUp.toModel());
+
+  }
+
 }

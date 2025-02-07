@@ -1,3 +1,5 @@
+import 'package:top_up_app/data/models/top_up_model.dart';
+
 import '../../core/utils/enums.dart';
 
 class TopUp {
@@ -17,4 +19,17 @@ class TopUp {
       this.accountNumber,
       this.currency,
       this.id});
+
+
+  TopUpModel toModel(){
+    return TopUpModel(
+        id: id,
+        beneficiaryName: beneficiaryName,
+        accountNumber: accountNumber,
+        amount: amount,
+        currency: currency,
+        type: type,
+        createdAt: createdAt);
+  }
+
 }

@@ -1,12 +1,18 @@
-import 'package:equatable/equatable.dart';
+import 'package:top_up_app/data/models/beneficiary_model.dart';
 
-class Beneficiary extends Equatable {
-  final String id;
-  final String nickname;
-  final String phoneNumber;
+class Beneficiary {
+  String? id;
+  String? nickname;
+  String? phoneNumber;
+  String? createdAt;
 
-  const Beneficiary({required this.id, required this.nickname, required this.phoneNumber});
+  Beneficiary({this.id, this.nickname, this.phoneNumber, this.createdAt});
 
-  @override
-  List<Object> get props => [id, nickname, phoneNumber];
+  BeneficiaryModel toModel() {
+    return BeneficiaryModel(
+        id: id,
+        nickname: nickname,
+        phoneNumber: phoneNumber,
+        createdAt: createdAt);
+  }
 }

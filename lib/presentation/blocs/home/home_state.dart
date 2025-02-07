@@ -1,24 +1,28 @@
 import 'package:equatable/equatable.dart';
 import 'package:top_up_app/core/utils/enums.dart';
-import 'package:top_up_app/domain/entities/top_up.dart';
 
 import '../../../core/error/server_exception.dart';
+import '../../../domain/entities/user.dart';
 
 class HomeState extends Equatable {
   final ViewState? viewState;
-  final List<TopUp>? topUpList;
+  final User? user;
   final ServerException? error;
 
-  const HomeState({this.topUpList, this.viewState, this.error});
+  const HomeState({ this.user, this.viewState, this.error});
+
+  get isVerified=>user?.isVerified??false;
 
   HomeState copyWith(
-      {ViewState? viewState, List<TopUp>? topUpList, ServerException? error}) {
+      {ViewState? viewState,
+      User? user,
+      ServerException? error}) {
     return HomeState(
         viewState: viewState ?? this.viewState,
-        topUpList: topUpList ?? this.topUpList,
+        user: user ?? this.user,
         error: error ?? this.error);
   }
 
   @override
-  List<Object?> get props => [viewState, topUpList, error];
+  List<Object?> get props => [viewState, user, error];
 }

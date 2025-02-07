@@ -1,9 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:top_up_app/core/utils/enums.dart';
+import 'package:top_up_app/main.dart';
 
 import '../../domain/entities/top_up.dart';
-
-
 
 class TopUpModel {
   String? id;
@@ -48,13 +46,28 @@ class TopUpModel {
     return data;
   }
 
+
+  // // Helper function to convert string to enum
+  // TransactionType? _transactionTypeFromString(String? type) {
+  //   if (type == null) return null;
+  //   return TransactionType.values.firstWhere(
+  //         (e) => e.name == type,
+  //     orElse: () => throw ArgumentError('Invalid transaction type: $type'),
+  //   );
+  // }
+  //
   TopUpType? _transactionTypeFromString(String? type) {
+    logger.e("TypeIssue : $type");
     if (type == null) return null;
-    for (var e in TopUpType.values) {
-      if (e.name == type) return e;
-    }
-    debugPrint('Invalid transaction type: $type');
-    return null;
+    // for (var e in TopUpType.values) {
+    //   if (e.name == type) return e;
+    // }
+      return TopUpType.values.firstWhere(
+            (e) => e.name == type,
+        orElse: () => throw ArgumentError('Invalid transaction type: $type'),
+      );
+    // debugPrint('Invalid transaction type: $type');
+    // return null;
   }
 
   /// Convert Model to entity

@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:top_up_app/data/data_sources/home/home_remote_data_source.dart';
 import 'package:top_up_app/data/models/top_up_model.dart';
-import 'package:top_up_app/data/models/user_model.dart';
 import 'package:http/http.dart' as http;
 
 import '../../../../core/error/server_exception.dart';
@@ -17,23 +16,30 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
   static const baseUrl = 'https://$apiKey.mockapi.io/api/v1/';
 
   @override
-  Future<void> addTopUp(TopUpModel topUp) {
-    // TODO: implement addTopUp
-    throw UnimplementedError();
+  Future<TopUpModel> addTopUp(TopUpModel topUp) async {
+    try {
+      logger.e("ResponseIssue : requestBody ${topUp.toJson()}");
+      final response = await client.post(Uri.parse('${baseUrl}top_up_list'),
+          body: topUp.toJson());
+      logger.e("ResponseIssue : response ${response.request.toString()} ${response.body.toString()}");
+
+      if (response.statusCode == 201) {
+        return TopUpModel.fromJson(json.decode(response.body));
+      } else {
+        throw ServerException();
+      }
+    } catch (e) {
+      logger.e("ResponseIssue : $e");
+      throw ServerException();
+    }
   }
 
-  @override
-  Future<UserModel> getProfile() {
-    // TODO: implement getProfile
-    throw UnimplementedError();
-  }
+
 
   @override
   Future<List<TopUpModel>> getTopUpList() async {
     try {
       final response = await client.get(Uri.parse('${baseUrl}top_up_list'));
-      logger.e(
-          "ResponseIssue: ${response.body.toString()}  ${response.statusCode}");
       if (response.statusCode == 200) {
         final List<dynamic> responseBody = json.decode(response.body);
 

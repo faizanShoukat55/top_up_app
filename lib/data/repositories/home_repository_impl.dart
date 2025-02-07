@@ -6,7 +6,6 @@ import 'package:top_up_app/data/data_sources/home/home_remote_data_source.dart';
 import '../../domain/entities/top_up.dart';
 import '../../domain/repositories/home_repository.dart';
 import '../models/top_up_model.dart';
-import '../models/user_model.dart';
 
 class HomeRepositoryImpl extends HomeRepository {
   final HomeRemoteDataSource remoteDataSource;
@@ -14,16 +13,16 @@ class HomeRepositoryImpl extends HomeRepository {
   HomeRepositoryImpl({required this.remoteDataSource});
 
   @override
-  Future<Either<Failure, void>> addTopUp(TopUp topUp) {
-    // TODO: implement addTopUp
-    throw UnimplementedError();
+  Future<Either<Failure, TopUp>> addTopUp(TopUpModel topUp) async{
+    try {
+      final  response=await remoteDataSource.addTopUp(topUp);;
+      return Right(response.toEntity());
+    } catch (e) {
+      return Left(ServerFailure());
+    }
   }
 
-  @override
-  Future<Either<Failure, UserModel>> getProfile() {
-    // TODO: implement getProfile
-    throw UnimplementedError();
-  }
+
 
   @override
   Future<Either<Failure, List<TopUp>>> getTopUpList() async {
