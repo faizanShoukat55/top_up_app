@@ -128,7 +128,7 @@ class _TopUpScreenState extends State<TopUpScreen> {
 
   void _handleTopUpSuccess(BuildContext context, TopUpState state) {
     context.read<HomeCubit>().updateMyBalance(state.topUp);
-    context.read<TopUpCubit>().addTopUpToList(state.topUp);
+    //context.read<TopUpCubit>().addTopUpToList(state.topUp);
     ScaffoldMessenger.of(context).showSnackBar(
       Ui.customSnackBar(
           message: Constant.topUpSuccessMessage, type: SnackBarType.success),

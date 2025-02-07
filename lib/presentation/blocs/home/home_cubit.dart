@@ -28,7 +28,7 @@ class HomeCubit extends Cubit<HomeState> {
         user: User(
             id: "-1",
             name: "Faizan Shoukat",
-            balance: 4000,
+            balance: 100,
             isVerified: true,
             isBalanceVisible: true)));
   }
