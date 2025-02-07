@@ -10,11 +10,12 @@ This is a Mobile Top Up App Using Flutter for (Android,IOS and WEB)
 ## Features
 1. **Home**: On Home page, user can view Top Up history and avialble balance.
 2. **Beneficiary**: Users can add up to 5 beneficiaries.
+3. **Top Up Fees**: **3 AED** fee is applied per top up.
 4. **Top-Up Validations**:
+   - Users can Top up to **3000 AED** to all beneficiaries per month.
    - Verified users can top up - upto **1000 AED** per month.
    - Unverified users can top up - upto **500 AED** per month.
-5. **Monthly Limit**: Users can transfer up to **3000 AED** to all beneficiaries per month.
-6. **Top Up Fees**: **3 AED** fee is applied per top up.
+
 
 
 
