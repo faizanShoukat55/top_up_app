@@ -20,7 +20,7 @@ class TopUpCubit extends Cubit<TopUpState> {
 
   Future<void> getTopUpList() async {
     emit(state.copyWith(viewState: ViewState.loading));
-    final response = await homeRepository.getTopUpList();
+    final response = await homeRepository.call();
     response.fold(
       (failure) => emit(state.copyWith(
           viewState: ViewState.error,

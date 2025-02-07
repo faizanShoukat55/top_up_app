@@ -7,7 +7,7 @@ class GetHomeRepository{
   final HomeRepository homeRepository;
   GetHomeRepository({required this.homeRepository});
 
-  Future<Either<Failure,List<TopUp>>> getTopUpList() async{
+  Future<Either<Failure,List<TopUp>>> call() async{
     return await homeRepository.getTopUpList();
   }
 
