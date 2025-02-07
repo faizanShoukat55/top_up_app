@@ -7,7 +7,7 @@ class GetBeneficiaryRepository{
   final BeneficiaryRepository beneficiaryRepository;
   GetBeneficiaryRepository({required this.beneficiaryRepository});
 
-  Future<Either<Failure,List<Beneficiary>>> getBeneficiary() async{
+  Future<Either<Failure,List<Beneficiary>>> call() async{
     return await beneficiaryRepository.getBeneficiaries();
   }
 

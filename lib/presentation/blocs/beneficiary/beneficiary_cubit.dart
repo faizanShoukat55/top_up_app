@@ -20,7 +20,7 @@ class BeneficiaryCubit extends Cubit<BeneficiaryState> {
       emit(state.copyWith(viewState: ViewState.loading));
 
       /// api call
-      final response = await beneficiaryRepository.getBeneficiary();
+      final response = await beneficiaryRepository.call();
 
       /// response handling
       response.fold(
